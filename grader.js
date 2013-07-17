@@ -61,7 +61,7 @@ var checkHtmlFile = function(htmlfile, checksfile) {
 	out[checks[ii]] = present;
     }
     return out;
-}
+};
 
 var checkHtmlUrl = function(htmlurl, checksfile) {
     rest.get(htmlurl).on('complete', function(data){
@@ -75,7 +75,7 @@ var checkHtmlUrl = function(htmlurl, checksfile) {
 	var outJson = JSON.stringify(out, null, 4);
 	console.log(outJson);
     });
-}
+};
 
 var clone = function(fn) {
     // Workaround for commander.js issue.
@@ -87,7 +87,7 @@ if(require.main == module) {
     program
       .option('-c, --checks <check_file>', 'Path to checks.json', clone(assertFileExists), CHECKSFILE_DEFAULT)
       .option('-f, --file <html_file>', 'Path to index.html', clone(assertFileExists), HTMLFILE_DEFAULT)
-      .option('-u, --url <url>', 'Url to check') 
+      .option('-u, --url <url>', 'Url to check')
       .parse(process.argv);
     if(program.url)
 	var checkJson = checkHtmlUrl(program.url, program.checks);
